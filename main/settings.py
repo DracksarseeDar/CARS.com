@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'cars_of_facts',
+    'car_categories',
 ]
 
 MIDDLEWARE = [

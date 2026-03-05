@@ -1,0 +1,8 @@
+{% for i in car_key %}
+
+<p>{{ i.name_car }}</p>
+<p>{{ i.description }}</p>
+<img src="{{ i.image.url }}" alt="" width="300" height="200">
+<a href="/cars_list/{{ i.id }}/">Подробнее</a>
+
+{% endfor %}

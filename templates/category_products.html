@@ -1,0 +1,14 @@
+<h1>Товары категории: {{ category_key.name }}</h1>
+<hr>
+<hr>
+
+{% for i in products_key %}
+
+<p>Товар: {{ i.name }}</p>
+<p>Цена: {{ i.price }}</p>
+
+<hr>
+{% endfor %}
+
+<br>
+<a href="/categories/">Назад к списку категорий</a>

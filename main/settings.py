@@ -24,6 +24,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cars_of_facts',
     'car_categories',
+    'tourism',
+    'myShop',
 ]
 
 MIDDLEWARE = [

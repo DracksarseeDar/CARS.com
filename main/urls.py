@@ -6,9 +6,13 @@ from django.urls import path , include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('captcha/', include('captcha.urls')),
     path('', include('cars_of_facts.urls')),
     path('', include('car_categories.urls')),
     path('', include('myShop.urls')),
+    path('', include('drivers.urls')),
+    path('', include('users.urls')),
+   
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

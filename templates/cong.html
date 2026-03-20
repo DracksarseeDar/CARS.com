@@ -1,0 +1,22 @@
+<h1>Список пользователей</h1>
+
+{% for i in user %}
+    <div style="border: 1px solid black; margin-bottom: 15px; padding: 15px; border-radius: 5px;">
+        <p><strong>Логин:</strong> {{ i.username }}</p>
+        <p><strong>Специализация:</strong> {{ i.specialization|default:"Не указана" }}</p>
+        <p><strong>Город:</strong> {{ i.city|default:"Не указан" }}</p>
+        <p><strong>Опыт:</strong> {{ i.experience_years }} лет</p>
+        <p><strong>Телефон:</strong> {{ i.phone_number }}</p>
+
+        {% if i.photo %}
+            <p><strong>Фото:</strong><br>
+            <img src="{{ i.photo.url }}" width="150" style="margin-top: 10px; border: 1px solid #ddd;"></p>
+        {% endif %}
+        
+        {% if i.github_link %}
+            <p><a href="{{ i.github_link }}" target="_blank">GitHub профиль</a></p>
+        {% endif %}
+    </div>
+{% empty %}
+    <p>Пользователей пока нет.</p>
+{% endfor %}

@@ -1,0 +1,26 @@
+<h1>Список водителей</h1>
+<hr>
+<hr>
+<hr>
+
+{% for i in driver %}
+
+<p>ФИО: {{ i.full_name }}</p>
+<p>Дата рождения: {{ i.birthday }}</p>
+<p>Стаж: {{ i.experience }} лет</p>
+<p>Права: {% if i.has_license %}Есть{% else %}Нет{% endif %}</p>
+
+{% if i.photo %}
+    <p><img src="{{ i.photo.url }}" width="150"></p>
+{% endif %}
+
+<a href="/driver_list/{{ i.id }}/update/">Изменить данные</a>
+<a href="/driver_list/{{ i.id }}/delete/">Удалить анкету</a>
+
+<hr>
+<hr>
+<hr>
+{% endfor %}
+
+<br>
+<a href="/create_driver/">Добавить нового водителя</a>

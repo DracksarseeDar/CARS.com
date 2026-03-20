@@ -1,0 +1,12 @@
+<h1>Регистрация IT-специалиста</h1>
+<form method="POST" enctype="multipart/form-data">
+
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit">Зарегистрироваться</button>
+    <button type="reset">Очистить</button>
+
+</form>
+
+<p>Уже есть аккаунт? <a href="/login/">Войти здесь</a></p>

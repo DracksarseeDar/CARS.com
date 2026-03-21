@@ -1,9 +1,11 @@
-from django.urls import path 
-from drivers.views import create_driver_view , driver_list_view , update_driver_view ,delete_driver_view
+from django.urls import path
+from . import views
 
-urlpatterns =[
-    path('create_driver/',create_driver_view),
-    path('driver_list/',driver_list_view),
-    path('driver_list/<int:id>/update/',update_driver_view),
-    path('driver_list/<int:id>/delete/',delete_driver_view),
+app_name = 'drivers'
+
+urlpatterns = [
+    path('create_driver/', views.DriverCreateView.as_view(), name='create_driver'),
+    path('driver_list/', views.DriverListView.as_view(), name='driver_list'),
+    path('driver_list/<int:id>/update/', views.DriverUpdateView.as_view(), name='update_driver'),
+    path('driver_list/<int:id>/delete/', views.DriverDeleteView.as_view(), name='delete_driver'),
 ]

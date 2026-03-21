@@ -20,7 +20,7 @@ class Cars(models.Model):
 
     category_car = models.CharField(max_length=100, choices=CATEGORY_CAR, 
                                      verbose_name='выберите категорию')
-    
+    views = models.PositiveIntegerField(default=0 , null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

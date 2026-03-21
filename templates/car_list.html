@@ -1,8 +1,41 @@
+<h1>Список машин</h1>
+
+<form action="/car_list/" method="GET">
+    <input type="text" name="search" placeholder="Поиск машин..." value="{{ search_value|default:'' }}">
+    <button type="submit">Найти</button>
+</form>
+
+<hr>
+
 {% for i in car_key %}
-
-<p>{{ i.name_car }}</p>
-<p>{{ i.description }}</p>
-<img src="{{ i.image.url }}" alt="" width="300" height="200">
-<a href="/cars_list/{{ i.id }}/">Подробнее</a>
-
+    <div style="border: 1px solid gray; margin-bottom: 10px; padding: 10px; border-radius: 8px;">
+        <h3>{{ i.name_car }}</h3>
+        
+        {% if i.image %}
+            <img src="{{ i.image.url }}" alt="" width="300">
+        {% endif %}
+        
+        <p><strong>Категория:</strong> {{ i.category_car }}</p>
+        <p><strong>Просмотры:</strong> {{ i.views }}</p>
+        
+        <a href="{% url 'cars:car_detail' i.id %}">Подробнее</a>
+    </div>
+{% empty %}
+    <p>Машин не найдено.</p>
 {% endfor %}
+
+<hr>
+
+<div class="pagination">
+    {% if car_key.has_previous %}
+        <a href="?page=1{% if search_value %}&search={{ search_value }}{% endif %}">&laquo; Первая</a>
+        <a href="?page={{ car_key.previous_page_number }}{% if search_value %}&search={{ search_value }}{% endif %}">Назад</a>
+    {% endif %}
+
+    <span>Страница {{ car_key.number }} из {{ car_key.paginator.num_pages }}</span>
+
+    {% if car_key.has_next %}
+        <a href="?page={{ car_key.next_page_number }}{% if search_value %}&search={{ search_value }}{% endif %}">Вперед</a>
+        <a href="?page={{ car_key.paginator.num_pages }}{% if search_value %}&search={{ search_value }}{% endif %}">Последняя &raquo;</a>
+    {% endif %}
+</div>

@@ -1,5 +1,20 @@
+<p><strong>Просмотры:</strong> {{ car_id_key.views }}</p>
+
 <h1>{{ car_id_key.name_car }}</h1>
-<p>{{ car_id_key.description }}</p>
-<img src="{{ car_id_key.image.url }}" alt="" width="400" height="300">
-<p>{{ car_id_key.category_car }}</p>
-<p>{{ car_id_key.created_at }}</p>
+
+<p><strong>Категория:</strong> {{ car_id_key.category_car }}</p>
+
+{% if car_id_key.image %}
+    <img src="{{ car_id_key.image.url }}" alt="{{ car_id_key.name_car }}" width="500">
+{% endif %}
+
+<div style="margin-top: 20px;">
+    <h3>Описание:</h3>
+    <p>{{ car_id_key.description }}</p>
+</div>
+
+<p><small>Дата добавления: {{ car_id_key.created_at }}</small></p>
+
+<hr>
+
+<a href="{% url 'cars:car_list' %}">← Вернуться к списку машин</a>

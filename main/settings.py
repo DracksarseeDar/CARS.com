@@ -1,11 +1,12 @@
 from pathlib import Path
 import os
+from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+load_dotenv()
 
-
-SECRET_KEY = 'django-insecure-qdk&o3gnq!2-csbq=fvilbj3nh_8bup9z0fo(*2c7@-!s_sl-l'
+SECRET_KEY = os.getenv("WORK_KEY")
 
 
 DEBUG = True
